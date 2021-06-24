@@ -36,13 +36,13 @@ export const TodoApp = () => {
       payload: newTodo,
     });
   };
-
+  let numtodos = todos.length;
   return (
     <div className="border-2 border-gray-400 p-4 height ">
       <h1 className="text-5xl pb-4 border-b-2 border-gray-300">
         TODO Aplication
       </h1>
-      <h2 className="text-3xl mt-2">Number of TODOs {todos.length}</h2>
+      <h2 className="text-3xl mt-2">Number of TODOs {numtodos}</h2>
       <div className="flex justify-between">
         <div className="w-1/2">
           <TodoList
