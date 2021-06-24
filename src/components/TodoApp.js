@@ -47,24 +47,30 @@ export const TodoApp = () => {
         TODO Aplication
       </h1>
       <h2 className="text-3xl mt-2">Number of TODOs {todos.length}</h2>
-      <div className="flex">
+      <div className="flex justify-between">
         <div className="w-1/2">
           <ul>
             {todos.map((todo, i) => (
-              <li key={todo.id}>
-                <p>
+              <li className=" mb-5 flex justify-between" key={todo.id}>
+                <p className="my-auto">
                   {i + 1}: {todo.desc}
                 </p>
+                <button className="px-5 py-4 rounded font-medium bg-red-500 text-white hover:bg-red-900 transition duration-250">
+                  Delete
+                </button>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="w-1/3 border-2 border-gray-500 p-5">
-          <h1 className="pb-2 border-b-2 border-gray-300 text-4xl mb-3">
-            Add TODO
-          </h1>
-          <form onSubmit={handleSubmit}>
+        <div className="w-1/3 ">
+          <form
+            className="border-2 border-gray-500 p-5"
+            onSubmit={handleSubmit}
+          >
+            <h1 className="pb-2 border-b-2 border-gray-300 text-4xl mb-3">
+              Add TODO
+            </h1>
             <input
               type="text"
               placeholder="Add New TODO"
