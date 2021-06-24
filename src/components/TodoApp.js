@@ -1,14 +1,15 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { useForm } from '../hooks/useForm';
 import { todoReducer } from './todoReducer';
 const init = () => {
-  return [
-    {
-      id: new Date().getTime(),
-      desc: 'Hola',
-      done: false,
-    },
-  ];
+  //   return [
+  //     {
+  //       id: new Date().getTime(),
+  //       desc: 'Hola',
+  //       done: false,
+  //     },
+  //   ];
+  return JSON.parse(localStorage.getItem('todos'));
 };
 export const TodoApp = () => {
   const [todos, dispatch] = useReducer(todoReducer, [], init);
@@ -16,6 +17,10 @@ export const TodoApp = () => {
   const [{ description }, handleInputChange, reset] = useForm({
     description: '',
   });
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -51,7 +56,10 @@ export const TodoApp = () => {
         <div className="w-1/2">
           <ul>
             {todos.map((todo, i) => (
-              <li className=" mb-5 flex justify-between" key={todo.id}>
+              <li
+                className="py-1 my-2 flex justify-between border-t-2 border-b-2 border-b-gray-300 "
+                key={todo.id}
+              >
                 <p className="my-auto">
                   {i + 1}: {todo.desc}
                 </p>
