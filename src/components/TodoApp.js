@@ -44,6 +44,15 @@ export const TodoApp = () => {
     reset();
   };
 
+  const handleDelete = valueId => {
+    const action = {
+      type: 'delete',
+      payload: valueId,
+    };
+
+    dispatch(action);
+  };
+
   console.log(todos);
 
   return (
@@ -63,7 +72,10 @@ export const TodoApp = () => {
                 <p className="my-auto">
                   {i + 1}: {todo.desc}
                 </p>
-                <button className="px-5 py-4 rounded font-medium bg-red-500 text-white hover:bg-red-900 transition duration-250">
+                <button
+                  onClick={() => handleDelete(todo.id)}
+                  className="px-5 py-4 rounded font-medium bg-red-500 text-white hover:bg-red-900 transition duration-250"
+                >
                   Delete
                 </button>
               </li>
