@@ -53,10 +53,19 @@ export const TodoApp = () => {
     dispatch(action);
   };
 
+  const handleToggle = valueId => {
+    const action = {
+      type: 'toggle',
+      payload: valueId,
+    };
+
+    dispatch(action);
+  };
+
   console.log(todos);
 
   return (
-    <div>
+    <div className="border-2 border-gray-400 p-4 height ">
       <h1 className="text-5xl pb-4 border-b-2 border-gray-300">
         TODO Aplication
       </h1>
@@ -69,7 +78,12 @@ export const TodoApp = () => {
                 className="py-1 my-2 flex justify-between border-t-2 border-b-2 border-b-gray-300 "
                 key={todo.id}
               >
-                <p className="my-auto">
+                <p
+                  onClick={() => handleToggle(todo.id)}
+                  className={`${
+                    todo.done && 'complete bg-green-500 rounded p-1'
+                  } my-auto `}
+                >
                   {i + 1}: {todo.desc}
                 </p>
                 <button
@@ -83,7 +97,7 @@ export const TodoApp = () => {
           </ul>
         </div>
 
-        <div className="w-1/3 ">
+        <div className="w-1/2 ml-5">
           <form
             className="border-2 border-gray-500 p-5"
             onSubmit={handleSubmit}

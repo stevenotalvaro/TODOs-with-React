@@ -5,3 +5,19 @@
 body {
   padding: 50px;
 }
+
+.complete {
+  text-decoration: line-through;
+}
+
+p {
+  cursor: pointer;
+}
+
+.height {
+  margin-left: auto;
+  margin-right: auto;
+  height: 700px;
+  padding: 50px;
+  width: 1000px;
+}
